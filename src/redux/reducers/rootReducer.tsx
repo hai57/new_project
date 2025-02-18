@@ -1,11 +1,16 @@
 import { combineReducers } from "redux";
-
-const dummyReducer = (state = {}, action: any) => {
-  return state;
-};
+import { notificationReducer } from "./notificationReducer";
+import { authenticateReducer } from "./authenticateReducer";
+import { applicationReducer } from "./applicationReducer";
+import { caNhanHoaReducer }from "./caNhanHoaReducer"
+import { confirmationDialogReducer } from "./confirmDialogReducer";
 
 export const rootReducer = combineReducers({
-  dummy: dummyReducer
+  application: applicationReducer,
+  authenticate: authenticateReducer,
+  notification: notificationReducer,
+  caNhanHoaReducer: caNhanHoaReducer,
+  confirmationDialog: confirmationDialogReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -1,0 +1,4 @@
+export const THONGTINHETHONG = {
+  TENDONVI: "SỞ THÔNG TIN VÀ TRUYỀN THÔNG TỈNH KHÁNH HÒA",
+  TENHETHONG: "PHẦN MỀM PHÂN TÍCH XỬ LÝ DỮ LIỆU",
+};
