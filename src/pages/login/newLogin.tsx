@@ -1,4 +1,4 @@
-import { Box, Button, Card, Checkbox, FormControlLabel, Grid, Snackbar, Alert, Theme, alpha, InputBase, FormHelperText, Link } from "@mui/material";
+import { Box, Button, Card, Checkbox, FormControlLabel, Grid2, Snackbar, Alert, Theme, alpha, InputBase, FormHelperText, Link } from "@mui/material";
 import { withStyles, createStyles, makeStyles } from "@mui/styles";
 import React, { Dispatch, useState } from "react";
 import axios from "axios";
@@ -44,11 +44,13 @@ const BootstrapInput = withStyles((theme: Theme) =>
             width: "100%",
             borderRadius: 8,
             position: "relative",
-            backgroundColor: theme.palette.common.white,
-            border: "1px solid #ced4da",
+            // backgroundColor: theme.palette.common.white,
+            transition: "color .2s ease, background-color .2s ease",
+            backgroundColor: "#f5f8fa",
+            border: "1px solid #f5f8fa",
             fontSize: 16,
             padding: "10px 12px",
-            transition: theme.transitions.create(["border-color", "box-shadow"]),
+            // transition: theme.transitions.create(["border-color", "box-shadow"]),
             // Use the system font instead of the default Roboto font.
             fontFamily: [
                 "-apple-system",
@@ -65,6 +67,10 @@ const BootstrapInput = withStyles((theme: Theme) =>
             "&:focus": {
                 boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 0.2rem`,
                 borderColor: theme.palette.primary.main,
+            },
+            // Style placeholder
+            "&::placeholder": {
+                fontWeight: "bold",
             },
         },
     })
@@ -507,14 +513,14 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
     };
 
     return (
-        <Grid container>
-            <Grid
-                item
-                xs={4}
+        <Grid2 container>
+            <Grid2
                 className="leftLogin"
+                component="div"
                 style={{
-                    backgroundImage: `url(${leftBg})`,
+                    // backgroundImage: `url(${leftBg})`,
                     // backgroundSize: "cover",
+                    backgroundColor: "#0B0E2E",
                     maxWidth: "30%",
                     minWidth: "30%",
                     flexBasis: "30%",
@@ -523,10 +529,20 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                     alignItems: "center",
                     flexDirection: "column",
                     justifyContent: "space-evenly",
+                    overflow: "hidden",
+                    minHeight: "500px"
                 }}
             >
+                <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      flexDirection: "column",
+                      justifyContent: "space-evenly",
+                      overflowY: "auto",
+                }}>
                 <img src={logoConfig != null ? logoConfig : loginLogo} className="logo_login" alt="logo" width="120px" height="120px" style={{ zIndex: 99 }} />
-                <Box className="group_title" component="div" display="flex" flexDirection="column" style={{ marginTop: "-50%" }}>
+                <Box className="group_title" component="div" display="flex" flexDirection="column" style={{  }}>
                     <Box
                         className="font_login"
                         component="span"
@@ -537,7 +553,10 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                         textAlign="center"
                         paddingBottom={1}
                     >
-                        {StringUtil.isNullOrEmty(tenDonViConfig) ? tenDonViConfig.toLocaleUpperCase() : THONGTINHETHONG.TENDONVI.toLocaleUpperCase()}
+                        {/* {StringUtil.isNullOrEmty(tenDonViConfig) ? tenDonViConfig.toLocaleUpperCase() : THONGTINHETHONG.TENDONVI.toLocaleUpperCase()} */}
+                       <h1>
+                            Chào mừng bạn đến với ...
+                       </h1>
                     </Box>
                     <Box
                         className="font_login"
@@ -548,12 +567,23 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                         color="#FFF"
                         textAlign="center"
                     >
-                        {StringUtil.isNullOrEmty(tenHeThongConfig) ? tenHeThongConfig.toLocaleUpperCase() : THONGTINHETHONG.TENHETHONG.toLocaleUpperCase()}
+                        {/* {StringUtil.isNullOrEmty(tenHeThongConfig) ? tenHeThongConfig.toLocaleUpperCase() : THONGTINHETHONG.TENHETHONG.toLocaleUpperCase()} */}
+                        <p>
+                            Hệ thống quản lý bệnh nhân thông minh
+                        </p>
+                        <p>
+                            tích hợp điện toán đám mây và trí tuệ nhân tạo
+                        </p>
                     </Box>
                 </Box>
-            </Grid>
-            <Grid className="rightLogin" item xs={8} style={{ maxWidth: "70%", flexBasis: "70%" }}>
-                <img src={tut1} alt="tut1" style={{ position: "absolute", top: "0px", left: "0px", height: "175.09px", width: "156.68px" }} />
+                </div>
+                <div>
+
+                </div>
+
+            </Grid2>
+            <Grid2 component="div" className="rightLogin" style={{ maxWidth: "70%", flexBasis: "70%" }}>
+                {/* <img src={tut1} alt="tut1" style={{ position: "absolute", top: "0px", left: "0px", height: "175.09px", width: "156.68px" }} />
                 <img src={tut2} alt="tut2" style={{ position: "absolute", top: "70px", left: "0px", height: "120px", width: "120px" }} />
                 <img src={tut3} alt="tut3" style={{ position: "absolute", top: "218px", left: "18%", height: "200px", width: "200px" }} />
                 <img src={tut4} alt="tut4" style={{ position: "absolute", bottom: "2%", left: "0px", height: "250px", width: "250px" }} />
@@ -562,16 +592,16 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                 <img src={tut7} alt="tut7" style={{ position: "absolute", top: "0px", right: "2%", height: "86.92px", width: "97.13px" }} />
                 <img src={tut8} alt="tut8" style={{ position: "absolute", top: "0px", right: "5%", height: "209.14px", width: "150.16px" }} />
                 <img src={tut9} alt="tut9" style={{ position: "absolute", top: "200px", right: "7%", height: "209.14px", width: "187.16px" }} />
-                <img src={tut10} alt="tut10" style={{ position: "absolute", bottom: "2%", right: "8.23px", height: "209.14px", width: "187.16px" }} />
-                <Grid
-                    item
-                    xs={12}
+                <img src={tut10} alt="tut10" style={{ position: "absolute", bottom: "2%", right: "8.23px", height: "209.14px", width: "187.16px" }} /> */}
+                <Grid2
+                    component="div"
                     style={{
+                        width: "100%",
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
                         height: "95vh",
-                        background: "linear-gradient(rgb(255, 255, 255) 0%, rgb(232 236 237 / 73%) 100%)",
+                        // background: "linear-gradient(rgb(255, 255, 255) 0%, rgb(232 236 237 / 73%) 100%)",
                     }}
                 >
                     <Box className="title_content" component="span"  fontSize="15px" fontWeight="400" textAlign="center" display="none">
@@ -597,9 +627,10 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                     />
                     <Card
                         className="form_login"
+                        elevation={0}
                         style={{
-                            width: "40%",
-                            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                            width: "30%",
+                            // boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
                             borderRadius: "16px",
                             paddingLeft: "24px",
                             paddingRight: "24px",
@@ -622,18 +653,22 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                                             fontFamily: "Roboto",
                                             color: "#262626",
                                             textAlign: "center",
+                                            display:"flex",
+                                            justifyContent:"center",
+                                            flexDirection:"column"
                                         }}
                                     >
-                                        Đăng nhập
+                                        <span>Đăng nhập</span>
+                                        <span style={{ fontWeight: 500, color:"#b5b5c3", fontSize:"14px"}}>Chưa có tài khoản? <Link>Đăng ký ngay</Link></span>
                                     </Box>
                                 </Box>
                                 <Box className="group_input" component="div" display="flex" flexDirection="column" marginBottom="19px">
                                     <Box
                                         component="span"
                                         style={{
-                                            fontSize: "16px",
+                                            fontSize: "14px",
                                             lineHeight: "22px",
-                                            fontWeight: 400,
+                                            fontWeight: 600,
                                             fontFamily: "Roboto",
                                             color: "#262626",
                                             marginBottom: "8px",
@@ -653,15 +688,32 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                                     <Box
                                         component="span"
                                         style={{
-                                            fontSize: "16px",
+                                            fontSize: "14px",
                                             lineHeight: "22px",
-                                            fontWeight: 400,
+                                            fontWeight: 600,
                                             fontFamily: "Roboto",
                                             color: "#262626",
                                             marginBottom: "8px",
+                                            display:"flex",
+                                            justifyContent:"space-between"
                                         }}
                                     >
                                         Mật khẩu
+                                        <Box
+                                        component="span"
+                                        style={{
+                                            fontSize: "14px",
+                                            lineHeight: "22px",
+                                            fontWeight: 400,
+                                            fontFamily: "Roboto",
+                                            color: "#1890FF",
+                                            cursor: "pointer",
+                                            textAlign: "center",
+                                        }}
+                                        onClick={() => setScreenOptions(1)}
+                                    >
+                                        Quên mật khẩu?
+                                    </Box>
                                     </Box>
                                     <BootstrapInput
                                         type="password"
@@ -672,7 +724,7 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                                         onChange={handlePasswordChange}
                                     />
                                 </Box>
-                                <Box component="div">
+                                {/* <Box component="div">
                                     <FormControlLabel
                                         control={
                                             <Checkbox
@@ -688,7 +740,7 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                                             </span>
                                         }
                                     />
-                                </Box>
+                                </Box> */}
                                 <Box component="div">
                                     <Button
                                         className="button_login"
@@ -720,23 +772,7 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                                         </Box>
                                     </Button>
                                 </Box>
-                                <Box component="div" display="flex" justifyContent="center">
-                                    <Box
-                                        component="span"
-                                        style={{
-                                            fontSize: "14px",
-                                            lineHeight: "22px",
-                                            fontWeight: 400,
-                                            fontFamily: "Roboto",
-                                            color: "#1890FF",
-                                            cursor: "pointer",
-                                            textAlign: "center",
-                                        }}
-                                        onClick={() => setScreenOptions(1)}
-                                    >
-                                        Quên mật khẩu?
-                                    </Box>
-                                </Box>
+
                             </motion.div>
                         )}
                         {formik.values.screenOptions === 1 && (
@@ -1148,14 +1184,14 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                             </motion.div>
                         )}
                     </Card>
-                </Grid>
-                <Grid item xs={12} style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "5vh" }}>
+                </Grid2>
+                <Grid2 component="div" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "5vh", width:"100%" }}>
                     <Box component="span" fontWeight="400" fontFamily="Roboto" lineHeight="22px" textAlign="center">
                         {/* © Bản quyền thuộc sở thông tin truyền thông Trà Vinh, Chính quyền điện tử tỉnh Trà Vinh. */}
                         {footerConfig}
                     </Box>
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
             <Snackbar open={alertError} onClose={() => setAlertError(false)} anchorOrigin={{ vertical: "top", horizontal: "right" }} autoHideDuration={3000}>
                 <Alert onClose={() => setAlertError(false)} severity="error">
                     {messageError}
@@ -1171,7 +1207,7 @@ const NewLogin: React.FC<NewLoginProps> = ({}) => {
                     {messageSuccess}
                 </Alert>
             </Snackbar>
-        </Grid>
+        </Grid2>
     );
 };
 
